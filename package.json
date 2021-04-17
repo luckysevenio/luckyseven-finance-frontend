@@ -8,7 +8,7 @@
     "build": "nx build",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
-    "export": "nx export matiasbn.dev",  
+    "export": "nx export luckyseven-finance-frontend",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
