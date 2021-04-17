@@ -1,0 +1,30 @@
+{
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "luckyseven-finance-frontend",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "luckyseven-finance-frontend": {
+      "tags": []
+    },
+    "luckyseven-finance-frontend-e2e": {
+      "tags": [],
+      "implicitDependencies": ["luckyseven-finance-frontend"]
+    }
+  }
+}
