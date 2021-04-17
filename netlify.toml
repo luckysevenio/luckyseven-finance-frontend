@@ -1,12 +1,12 @@
 [build]
 base = "."
-publish = "/dist/apps/luckyseven-finance-frontend/exported"
+publish = "/dist/apps/luckyseven-finance-frontend"
 
 # Production store:
 # All deploys from the main repository branch
 # will inherit these settings.
 [context.production]
-command = "npm run deploy"
+command = "npm run build"
 [context.production.environment]
 
 
