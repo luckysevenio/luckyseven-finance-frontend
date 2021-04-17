@@ -1,6 +1,6 @@
 [build]
 base = "."
-publish = "/dist/apps/matiasbn.dev/exported"
+publish = "/dist/apps/luckyseven-finance-frontend/exported"
 
 # Production store:
 # All deploys from the main repository branch
