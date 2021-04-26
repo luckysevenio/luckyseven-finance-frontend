@@ -1,9 +1,10 @@
-
-import Pokemon from './components/Pokemon';
+import Carta from './components/Carta';
 
 export function App() {
   return (
-    <Pokemon></Pokemon>
+    <div>
+      <Carta></Carta>
+    </div>
   );
 }
 

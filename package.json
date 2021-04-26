@@ -28,12 +28,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-is": "17.0.2",
     "regenerator-runtime": "0.13.7",
+    "style": "0.0.3",
     "styled-components": "5.2.1",
     "tslib": "^2.0.0"
   },
