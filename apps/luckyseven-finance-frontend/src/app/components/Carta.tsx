@@ -1,21 +1,19 @@
-import Pokemon from '../utils/Pokemon';
-import Mayus from '../utils/Mayus';
+import Character from '../utils/Character'
 
 function Carta() {
-  const Pokemones = Pokemon('/pokemon?limit=898&offset=0');
+  const Personaje = Character('character');
   return (
     <div>
-      {Pokemones?.results.map((pkm) => (
+      {Personaje?.results.map((psj) => (
         <div className="card" style={{ width: '18rem'}}>
-          <img src="..." className="card-img-top" alt="..."></img>
+          <img src={psj.image} className="card-img-top" alt="..."></img>
           <div className="card-body">
-            <h2>{pkm.url.split('/')[6]}</h2>
-            <h1 key={pkm.url.split('/')[6]}>{Mayus(pkm.name)}</h1>
-            <p className="card-text">Soy un Pokemon</p>
+            <h1 key={psj.id}>{psj.name}</h1>
+            <p className="card-text">{psj.species}</p>
           </div>
         </div>
       ))}
-    </div>
+     </div>
   );
 }
 export default Carta;

@@ -1,7 +1,7 @@
 import axios from 'axios';
-const baseurl = 'https://pokeapi.co/api/v2';
+const baseurl = 'https://rickandmortyapi.com/api/';
 
-export const getPokemon = async (api) => {
+export const getCharacter = async (api) => {
   try {
     const { data } = await axios({
       method: 'get',
