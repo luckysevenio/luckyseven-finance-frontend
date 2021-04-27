@@ -1,17 +1,12 @@
-import React from 'react';
-import Bootstrap from 'bootstrap';
 import Pokemon from '../utils/Pokemon';
 import Mayus from '../utils/Mayus';
-import PokemonArray from '../utils/PokemonArray';
 
 function Carta() {
-  const pkm = PokemonArray();
-  console.log(pkm);
-  
+  const Pokemones = Pokemon('/pokemon?limit=898&offset=0');
   return (
     <div>
-      {/* {Pokemones?.results.map((pkm) => (
-        <div className="card" style={{ width: '18rem', color: Pokemon("pokemon-species/"+pkm.name).color.name}} >
+      {Pokemones?.results.map((pkm) => (
+        <div className="card" style={{ width: '18rem'}}>
           <img src="..." className="card-img-top" alt="..."></img>
           <div className="card-body">
             <h2>{pkm.url.split('/')[6]}</h2>
@@ -19,7 +14,7 @@ function Carta() {
             <p className="card-text">Soy un Pokemon</p>
           </div>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 }
