@@ -10,7 +10,7 @@ export function Character(url) {
     }
     callCharacter();   
     return;
-  });
+  },[]);
   const [character, setCharacter] = useState(null);
   return character
 }
