@@ -1,5 +1,4 @@
-
-import React, { useEffect, useReducer, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
 import { getCharacter } from './endpoints';
 
 export function Character(url) {
@@ -8,11 +7,11 @@ export function Character(url) {
       const response = await getCharacter(url);
       setCharacter(response);
     }
-    callCharacter();   
+    callCharacter();
     return;
-  },[]);
+  }, []);
   const [character, setCharacter] = useState(null);
-  return character
+  return character;
 }
 
 export default Character;

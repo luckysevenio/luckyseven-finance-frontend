@@ -4,6 +4,7 @@ import { State } from '../../store';
 
 function Carta() {
   const name = useSelector((state: State) => state.nameFilter);
+  const pageNumber = useSelector((state: State) => state.pageNumber);
   const Personaje = Character('character');
   return (
     <div>

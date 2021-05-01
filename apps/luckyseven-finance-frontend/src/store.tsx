@@ -6,15 +6,19 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
   nameFilter: '',
+  pageNumber: 0,
 };
 
 export type State = typeof initialState;
 
 export enum ActionTypes {
   'CHANGE_FILTER' = 'CHANGE_FILTER',
+  'CHANGE_PAGE_NUMBER' = 'CHANGE_PAGE_NUMBER',
 }
 
-type Action = { type: ActionTypes.CHANGE_FILTER; payload: string };
+type Action =
+  | { type: ActionTypes.CHANGE_FILTER; payload: string }
+  | { type: ActionTypes.CHANGE_PAGE_NUMBER; payload: number };
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -22,6 +26,12 @@ export function reducer(state: State, action: Action): State {
       return {
         ...state,
         nameFilter: action.payload,
+      };
+    }
+    case ActionTypes.CHANGE_PAGE_NUMBER: {
+      return {
+        ...state,
+        pageNumber: action.payload,
       };
     }
   }
