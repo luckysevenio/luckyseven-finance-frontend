@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { ActionTypes } from '../../store';
 
 function Navbar() {
-  const [filter, setFilter] = useState('');
+  const dispatch = useDispatch();
+
+  const handleFilter = (event) => {
+    dispatch({
+      type: ActionTypes.CHANGE_FILTER,
+      payload: event.target.value,
+    });
+  };
 
   return (
     <div>
@@ -13,10 +21,7 @@ function Navbar() {
           <a className="navbar-brand">Rick and Morty browser</a>
           <form className="d-flex">
             <input
-              onChange={(event) => {
-                console.log(event);
-                setFilter(event.target.value);
-              }}
+              onChange={handleFilter}
               className="form-control me-2"
               type="search"
               placeholder="Search"

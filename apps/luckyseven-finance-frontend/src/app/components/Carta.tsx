@@ -1,7 +1,9 @@
 import Character from '../utils/Character';
+import { useSelector } from 'react-redux';
+import { State } from '../../store';
 
 function Carta() {
-  const name = 'summer';
+  const name = useSelector((state: State) => state.nameFilter);
   const Personaje = Character('character');
   return (
     <div>
