@@ -10,10 +10,11 @@ function Carta() {
     <div>
       {Personaje?.results.map(
         (psj) =>
-          new RegExp(name, 'i').test(psj.name) && (
+          new RegExp(`${name}`, 'i').test(psj.name) && (
             <div
               className="card"
               style={{ width: '18rem', display: 'inline-block' }}
+              key={psj.id}
             >
               <img
                 src={psj.image}
@@ -21,10 +22,7 @@ function Carta() {
                 style={{ display: 'block' }}
               ></img>
               <div className="card-body">
-                <h1
-                  key={psj.id}
-                  style={{ fontSize: '2rem', textAlign: 'center' }}
-                >
+                <h1 style={{ fontSize: '2rem', textAlign: 'center' }}>
                   {psj.name}
                 </h1>
                 <p className="card-text">{psj.species}</p>
