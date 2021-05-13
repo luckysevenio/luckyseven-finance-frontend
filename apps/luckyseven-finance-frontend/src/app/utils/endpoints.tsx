@@ -6,7 +6,8 @@ export const getCharacter = async (api) => {
     const { data } = await axios({
       method: 'get',
       url: baseurl + api,
-    });
+    }
+    );
     return data;
   } catch (error) {
     console.log(error);

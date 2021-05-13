@@ -6,7 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
   nameFilter: '',
-  pageNumber: 0,
+  pageNumber: 1,
+  raceFilter: '',
 };
 
 export type State = typeof initialState;
@@ -14,11 +15,13 @@ export type State = typeof initialState;
 export enum ActionTypes {
   'CHANGE_FILTER' = 'CHANGE_FILTER',
   'CHANGE_PAGE_NUMBER' = 'CHANGE_PAGE_NUMBER',
+  'CHANGE_RACE_FILTER' = 'CHANGE_RACE_FILTER',
 }
 
 type Action =
   | { type: ActionTypes.CHANGE_FILTER; payload: string }
-  | { type: ActionTypes.CHANGE_PAGE_NUMBER; payload: number };
+  | { type: ActionTypes.CHANGE_PAGE_NUMBER; payload: number }
+  | { type: ActionTypes.CHANGE_RACE_FILTER; payload: string};
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -34,8 +37,16 @@ export function reducer(state: State, action: Action): State {
         pageNumber: action.payload,
       };
     }
+    case ActionTypes.CHANGE_RACE_FILTER: {
+        return {
+          ...state,
+          raceFilter: action.payload,
+        };
+    }
+    default:{
+      return state;
+    }
   }
-  return state;
 }
 
 export function AppProvider(props: { children: ReactNode }) {

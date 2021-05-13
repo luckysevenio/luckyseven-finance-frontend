@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getCharacter } from './endpoints';
 
 export function Character(url) {
+  console.log(url);
   useEffect(() => {
     async function callCharacter() {
       const response = await getCharacter(url);
@@ -9,7 +10,7 @@ export function Character(url) {
     }
     callCharacter();
     return;
-  }, []);
+  });
   const [character, setCharacter] = useState(null);
   return character;
 }

@@ -2,10 +2,11 @@ import Character from '../utils/Character';
 import { useSelector } from 'react-redux';
 import { State } from '../../store';
 
-function Carta() {
+function Carta() {  
   const name = useSelector((state: State) => state.nameFilter);
+  const race = useSelector((state: State) => state.raceFilter);
   const pageNumber = useSelector((state: State) => state.pageNumber);
-  const Personaje = Character('character');
+  const Personaje = Character(`character?page=${pageNumber}&species=${race}`);
   return (
     <div>
       {Personaje?.results.map(
