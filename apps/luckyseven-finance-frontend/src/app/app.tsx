@@ -2,11 +2,12 @@ import Carta from './components/Carta';
 import Navbar from './components/navbar';
 import Paginacion from './components/Paginacion';
 import Titulo from './components/Titulo';
+import './components/style.css'
 
 
 export function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar></Navbar>
       <Titulo></Titulo>
       <Paginacion></Paginacion>

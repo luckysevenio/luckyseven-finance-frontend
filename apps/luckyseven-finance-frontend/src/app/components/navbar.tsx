@@ -26,8 +26,8 @@ function Navbar() {
   return (
     <div>
       <nav
-        className="navbar navbar-light bg-success"
-        style={{ height: '5rem' }}
+        className="navbar navbar-light"
+        style={{ backgroundColor: '#2EAB47'}}
       >
         <div className="container-fluid">
           <a className="navbar-brand">Rick and Morty browser</a>
