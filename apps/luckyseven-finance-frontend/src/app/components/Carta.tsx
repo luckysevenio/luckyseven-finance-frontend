@@ -4,13 +4,12 @@ import { State } from '../../store';
 
 function Carta() {
   const name = useSelector((state: State) => state.nameFilter);
-  const race = useSelector((state: State) => state.raceFilter);
-  const pageNumber = useSelector((state: State) => state.pageNumber);
-  const Personaje = Character(`character?page=${pageNumber}&species=${race}`);
+  const characters = useSelector((state: State) => state.characters);
+
   return (
     <div className="container justify-content-center align-items-center">
       <div className="row">
-        {Personaje?.results.map(
+        {characters?.results?.map(
           (psj) =>
             new RegExp(`${name}`, 'i').test(psj.name) && (
               <div className="col-md-3 animate__animated animate__zoomIn">

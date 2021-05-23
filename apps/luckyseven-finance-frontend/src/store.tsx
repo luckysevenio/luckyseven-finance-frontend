@@ -8,6 +8,7 @@ const initialState = {
   nameFilter: '',
   pageNumber: 1,
   raceFilter: '',
+  characters: null
 };
 
 export type State = typeof initialState;
@@ -16,12 +17,15 @@ export enum ActionTypes {
   'CHANGE_FILTER' = 'CHANGE_FILTER',
   'CHANGE_PAGE_NUMBER' = 'CHANGE_PAGE_NUMBER',
   'CHANGE_RACE_FILTER' = 'CHANGE_RACE_FILTER',
+  'STORE_CHARACTERS' = 'STORE_CHARACTERS',
 }
 
 type Action =
   | { type: ActionTypes.CHANGE_FILTER; payload: string }
   | { type: ActionTypes.CHANGE_PAGE_NUMBER; payload: number }
-  | { type: ActionTypes.CHANGE_RACE_FILTER; payload: string};
+  | { type: ActionTypes.CHANGE_RACE_FILTER; payload: string }
+  | { type: ActionTypes.STORE_CHARACTERS; payload: any };
+
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -38,12 +42,18 @@ export function reducer(state: State, action: Action): State {
       };
     }
     case ActionTypes.CHANGE_RACE_FILTER: {
-        return {
-          ...state,
-          raceFilter: action.payload,
-        };
+      return {
+        ...state,
+        raceFilter: action.payload,
+      };
     }
-    default:{
+    case ActionTypes.STORE_CHARACTERS:{
+      return{
+        ...state,
+        characters: action.payload,
+      };
+    }
+    default: {
       return state;
     }
   }
