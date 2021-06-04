@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 function navbar() {
-  const months = [1,2,3,4,5,6,7,8,9,10,11,12];
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">

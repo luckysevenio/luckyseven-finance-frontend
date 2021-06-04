@@ -1,11 +1,11 @@
 import axios from 'axios';
-const baseurl = 'https://api.fintoc.com/v1/';
+const baseurl = 'http://localhost:1337/withdraws/';
 
-export const getCharacter = async (api) => {
+export const getCharacter = async (year,month) => {
   try {
     const { data } = await axios({
       method: 'get',
-      url: baseurl + api,
+      url: baseurl + year+"/"+month,
     }
     );
     return data;

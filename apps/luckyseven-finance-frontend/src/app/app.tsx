@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import { useEffect } from 'react';
 import { getCharacter } from './utils/endpoints';
-import { useDispatch } from 'react-redux';
-import { ActionTypes } from '../store';
+import { useDispatch ,useSelector} from 'react-redux';
+import { ActionTypes, State } from '../store';
 import Lists from './components/Lists';
 import Footer from './components/Footer';
 import Filter from './components/Filter';
@@ -67,7 +67,21 @@ const StyledApp = styled.div`
   }
 `;
 
-export function App() { 
+export function App() {
+  const year = useSelector((state: State) => state.year); 
+  const month = useSelector((state: State) => state.month); 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function callCharacter() {
+      const response = await getCharacter(year,month);
+      dispatch({
+        type: ActionTypes.STORE_TRANSACTION,
+        payload: response,
+      });
+    }
+    callCharacter();
+    return;
+  },[]);
   return (
     <StyledApp>
       <div className="app">

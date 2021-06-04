@@ -5,8 +5,8 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
-  month: 0,
-  year: 0,
+  month: '',
+  year: '',
   transaction: null,
 };
 
@@ -14,13 +14,13 @@ export type State = typeof initialState;
 
 export enum ActionTypes {
   'STORE_MONTH' = 'STORE_MONTH',
-  'STORE_YEAR' = 'STORE_YEAER',
+  'STORE_YEAR' = 'STORE_YEAR',
   'STORE_TRANSACTION' = 'STORE_TRANSACTION',
 }
 
 type Action =
-  | { type: ActionTypes.STORE_MONTH; payload: number }
-  | { type: ActionTypes.STORE_YEAR; payload: number }
+  | { type: ActionTypes.STORE_MONTH; payload: string }
+  | { type: ActionTypes.STORE_YEAR; payload: string }
   | { type: ActionTypes.STORE_TRANSACTION; payload: any };
 
 export function reducer(state: State, action: Action): State {
@@ -40,7 +40,7 @@ export function reducer(state: State, action: Action): State {
     case ActionTypes.STORE_TRANSACTION: {
       return {
         ...state,
-        year: action.payload,
+        transaction: action.payload,
       };
     }
     default: {
