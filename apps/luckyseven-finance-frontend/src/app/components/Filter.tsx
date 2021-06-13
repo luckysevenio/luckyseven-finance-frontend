@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { ActionTypes } from '../../store';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ActionTypes, State } from '../../store';
 
 
 function Filter() {

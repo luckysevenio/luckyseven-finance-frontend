@@ -1,6 +1,6 @@
 import { faSearch, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+  
 
 function navbar() {
   return (
