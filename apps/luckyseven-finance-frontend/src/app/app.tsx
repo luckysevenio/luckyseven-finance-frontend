@@ -1,15 +1,15 @@
 import styled from 'styled-components';
+
+import {Provider} from 'react-redux'
+import generateStore from './redux/store';
+
 import Navbar from './components/Navbar';
-import { useEffect } from 'react';
-import { getCharacter } from './utils/endpoints';
-import { useDispatch ,useSelector} from 'react-redux';
-import { ActionTypes, State } from '../store';
 import Lists from './components/Lists';
 import Footer from './components/Footer';
 import Filter from './components/Filter';
 
 const StyledApp = styled.div`
-  .app {
+  .appl {
     background: rgb(2, 0, 36);
     background: linear-gradient(
       0deg,
@@ -68,30 +68,19 @@ const StyledApp = styled.div`
 `;
 
 export function App() {
-  const year = useSelector((state: State) => state.year); 
-  const month = useSelector((state: State) => state.month); 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    async function callCharacter() {
-      const response = await getCharacter(year,month);
-      dispatch({
-        type: ActionTypes.STORE_TRANSACTION,
-        payload: response,
-      });
-    }
-    callCharacter();
-    return;
-  },[]);
+  const store = generateStore()
   return (
-    <StyledApp>
-      <div className="app">
-        <Navbar />
-        <br/>
-        <Filter/>
-        <Lists />
-        <Footer/>
-      </div>
-    </StyledApp>
+    <Provider store ={store}>
+      <StyledApp>
+        <div className="appl">
+          <Navbar />
+          <br/>
+          <Filter/>
+          <Lists />
+          <Footer/>
+        </div>
+      </StyledApp>
+    </Provider>
   );
 }
 

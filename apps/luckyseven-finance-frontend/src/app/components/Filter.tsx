@@ -1,43 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActionTypes, State } from '../../store';
+
 
 
 function Filter() {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-  const [datos,setDatos]=useState({
-    year:''
-  })
-
   const dispatch = useDispatch();
+  const transactions = useSelector(store=>store.transaction);
 
-  const handleChange = (event)=>{
-    console.log(event.target.value);
-    setDatos({
-        ...datos,
-        [event.target.name] :event.target.value
-    })
-  }
-  const handleFilterYear = (event) => {
-    event.preventDefault();
-    dispatch({
-      type: ActionTypes.STORE_YEAR,
-      payload: `${datos.year}`,
-    })
-    ;
-  };
-  const handleFilterMonth = (event) => {
-    console.log(event.value);
-    dispatch({
-      type: ActionTypes.STORE_MONTH,
-      payload: `${event.target.value}`,
-    })
-    ;
-  };
   return (
     <div>
-      <div className="dropdown">
+        <form className="filter">
+               <div className="dropdown">
           <button
             className="btn btn-secondary dropdown-toggle"
             type="button"
@@ -59,7 +33,6 @@ function Filter() {
                     backgroundColor: 'rgba(14, 112, 131, 1)',
                     border: '1px solid',
                   }}
-                  onClick={handleFilterMonth}
                   value={index}
                 >
                   {month}
@@ -68,18 +41,16 @@ function Filter() {
             </li>
           </ul>
         </div>
-      <form className="filter" onSubmit={handleFilterYear}>
-        <input
-          className="form-control"
-          placeholder="Year"
-          aria-label="Year"
-          name="year"
-          onChange={handleChange}
-        ></input>
-        <button className="btn btn-outline-dark" type="submit">
-          Submit
-        </button>
-      </form>
+          <input
+            className="form-control"
+            placeholder="Year"
+            aria-label="Year"
+            name="year"
+          ></input>
+          <button className="btn btn-outline-dark" type="submit">
+            Submit
+          </button>
+        </form>
     </div>
   );
 }

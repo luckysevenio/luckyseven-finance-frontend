@@ -23,7 +23,7 @@ function Footer() {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2);" }}
       >
         © 2021 Copyright:
-        <a className="text-dark" href="https://mdbootstrap.com/">
+        <a className="text-dark" href="#">
           luckyseven
         </a>
       </div>
