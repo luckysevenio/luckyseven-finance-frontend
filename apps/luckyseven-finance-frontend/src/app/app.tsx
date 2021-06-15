@@ -8,7 +8,7 @@ import Filter from './components/Filter';
 const StyledApp = styled.div`
   .app{
     font-family: 'Oxygen', sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     background: rgb(238, 69, 64);
     background: linear-gradient(
     180deg,

@@ -7,20 +7,26 @@ const StyledApp = styled.div`
 .container{
   justify-content:center;
   align-items : center;
-  height:100;
+  height:100; 
+  margin-top: 5rem;
 }
-.
+.row{
+  margin-bottom: 2rem;
+}
+.col-md-4.animate__animated.animate__zoomIn{
+  margin-bottom: 2rem;
+}
 `;
 function Carta() {
   const transactions = useSelector((state: State) => state.transactions);
 
   return (
     <StyledApp>
-      <div className="container ">
+      <div className="container">
         <div className="row">
           {transactions?.map(
             (trs,index) =>
-                <div className="col-md-3 animate__animated animate__zoomIn">
+                <div className="col-md-4 animate__animated animate__zoomIn">
                   <div
                     className="card text-center"
                     key={index}
@@ -29,7 +35,9 @@ function Carta() {
                       <h1>
                         {trs.amount}
                       </h1>
-                      <p className="card-title">{trs.organization}</p>
+                      <p className="card-title">Description:{trs.description}</p>
+                      <p className="card-title">Organization:{trs.organization}</p>
+                      <p className="card-title">Date:{trs.transactionDate}</p>
                     </div>
                   </div>
                 </div>
