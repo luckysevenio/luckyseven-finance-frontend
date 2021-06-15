@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 const StyledApp = styled.div`
 .navbar.navbar-expand-lg.navbar-light{
-  border: 2px solid;
+  border: 1px solid;
   margin-bottom:1rem;
+  background-color: #343a40;
+}
+.navbar-brand{
+  color: white;
 }
 `;
 function Navbar() {
@@ -14,16 +18,7 @@ function Navbar() {
         <a className="navbar-brand" href="#">
           Luckyseven
         </a>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-           </ul>
-          </div>
-          <ul className="navbar-nav"> 
+        <ul className="navbar-nav"> 
           <form className="d-flex">
             <input
               className="form-control me-2"
@@ -31,12 +26,12 @@ function Navbar() {
               placeholder="Search"
               aria-label="Search"
             ></input>
-            <button className="btn btn-outline-dark" type="submit">
+            <button className="btn btn-outline-light" type="submit">
               Search
             </button>
           </form>
-          </ul>
-        </div>
+        </ul>
+      </div>
     </nav>
     </StyledApp>
   );

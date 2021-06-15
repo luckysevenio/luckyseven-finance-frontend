@@ -7,6 +7,7 @@ const StyledApp = styled.div`
   height: 15rem; 
   width: 100%;
   color: white;
+  background-color: #343a40;
 }
 @media only screen and (max-width: 1000px){
   .footer{
@@ -38,7 +39,7 @@ function Footer() {
                 className="text-center p-3"
               >
                 © 2021 Copyright:
-                <a className="text-dark" href="#">
+                <a className="text-light" href="#">
                   luckyseven
                 </a>
               </div>

@@ -7,11 +7,23 @@ const StyledApp = styled.div`
 .container{
   justify-content:center;
   align-items : center; 
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .col-md-4.animate__animated.animate__zoomIn{
   margin-bottom: 2rem;
+}
+.card-transaction{
+  text-align: center;
+  background-color: #343a40;
+  color: white;
+}
+.card-text{
+  color: gray;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.amount{
+  color: red
 }
 `;
 function Carta() {
@@ -25,16 +37,20 @@ function Carta() {
             (trs,index) =>
                 <div className="col-md-4 animate__animated animate__zoomIn">
                   <div
-                    className="card text-center"
+                    className="card-transaction"
                     key={index}
                   >
                     <div className="card-body">
-                      <h1>
+                      <h1>Amount:</h1>
+                      <h1 className="amount">
                         {trs.amount}
                       </h1>
-                      <p className="card-title">Description:{trs.description}</p>
-                      <p className="card-title">Organization:{trs.organization}</p>
-                      <p className="card-title">Date:{trs.transactionDate}</p>
+                      <h4 className="card-title">Description:</h4>
+                      <p className="card-text">{trs.description}</p>
+                      <h4 className="card-title">Organization:</h4>
+                      <p className="card-text">{trs.organization}</p>
+                      <h4 className="card-title">Date:</h4>
+                      <p className="card-text">{trs.transactionDate}</p>
                     </div>
                   </div>
                 </div>

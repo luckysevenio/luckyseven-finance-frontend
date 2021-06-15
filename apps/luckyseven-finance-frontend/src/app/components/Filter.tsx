@@ -17,6 +17,7 @@ const StyledApp= styled.div`
 .displayDate{
     text-align  :center;
 }
+  
 `;
 function Filter() {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -81,8 +82,8 @@ function Filter() {
                     ))}
                     </li>
                 </ul>
-            </div>
-            <div className="dropdown">
+              </div>
+              <div className="dropdown">
                 <button
                     className="btn btn-dark dropdown-toggle"
                     type="button"
@@ -106,14 +107,14 @@ function Filter() {
                     ))}
                     </li>
                 </ul>
-            </div>
-            <button className="btn btn-dark" onClick={submitFilter}>
-                Display
-            </button>
-        </div>
-        <h1 className="displayDate">
-          {parseInt(month.toString( ),10)+1}/{year}
-        </h1>
+              </div>
+              <button className="btn btn-dark" onClick={submitFilter}>
+                  Display
+              </button>
+          </div>
+          <h1 className="displayDate">
+            {parseInt(month.toString( ),10)+1}/{year}
+          </h1>
     </StyledApp>
   );
 }
