@@ -52,17 +52,6 @@ export function reducer(state: State, action: Action): State {
   }
 }
 
-export const getTransactions =(month,year)=>async(dispatch, getState)=>{
-  try {
-      const res = await axios.get(`http://localhost:1337/withdraws/${year}/${month}`);
-      dispatch({
-          type: ActionTypes.STORE_TRANSACTION,
-          payload: res.data
-      })
-  } catch (error) {
-      console.log(error);   
-  }
-}
 
 export function AppProvider(props: { children: ReactNode }) {
   const store = createStore(reducer, initialState, composeWithDevTools());

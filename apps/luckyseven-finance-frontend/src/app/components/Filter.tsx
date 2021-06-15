@@ -2,7 +2,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import React, { useState ,useEffect } from 'react';
 import { useDispatch ,useSelector} from 'react-redux';
-import { ActionTypes, getTransactions, State } from '../../store';
+import { ActionTypes, State } from '../../store';
 
 
 const StyledApp= styled.div`
@@ -17,6 +17,7 @@ const StyledApp= styled.div`
 `;
 function Filter() {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021];
   const dispatch = useDispatch();
   const year = useSelector((state: State)=>state.year);
   const month = useSelector((state: State) => state.month)
@@ -25,17 +26,11 @@ function Filter() {
     year:''
   })
 
-  const handleChange = (event)=>{
-    console.log(event.target.value);
-    setDatos({
-        ...datos,
-        [event.target.name] :event.target.value
-    })
-  }
+
   const handleFilterYear = (event) => {
     dispatch({
       type: ActionTypes.STORE_YEAR,
-      payload: `${datos.year}`,
+      payload: `${event.target.value}`,
     });
   };
   const handleFilterMonth = (event) => {    
@@ -53,7 +48,7 @@ function Filter() {
             payload: res.data
         })
     } catch (error) {
-        console.log(error);   
+        console.log(error);
     }
   };
   return (
@@ -67,7 +62,7 @@ function Filter() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                 >
-                    Months
+                    Month
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li className="month-item">
@@ -83,19 +78,32 @@ function Filter() {
                     ))}
                     </li>
                 </ul>
-                </div>
-            <form className="filter" onSubmit={handleFilterYear}>
-                <input
-                className="form-control"
-                placeholder="Year"
-                aria-label="Year"
-                name="year"
-                onChange={handleChange}
-                ></input>
-                <button className="btn btn-outline-dark" type="submit">
-                Submit
+            </div>
+            <div className="dropdown">
+                <button
+                    className="btn btn-dark dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Year
                 </button>
-            </form>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li className="month-item">
+                    {years.map((year, index) => (
+                        <button
+                        className="dropdown-item"
+                        key={index}
+                        onClick={handleFilterYear}
+                        value={year}
+                        >
+                        {year}
+                        </button>
+                    ))}
+                    </li>
+                </ul>
+            </div>
             <button className="btn btn-dark" onClick={submitFilter}>
                 Display
             </button>
