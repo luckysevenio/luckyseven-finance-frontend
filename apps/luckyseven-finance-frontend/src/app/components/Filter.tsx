@@ -14,6 +14,9 @@ const StyledApp= styled.div`
 .dropdown-item{
     text-align: center;
 }
+.displayDate{
+    text-align  :center;
+}
 `;
 function Filter() {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -108,6 +111,9 @@ function Filter() {
                 Display
             </button>
         </div>
+        <h1 className="displayDate">
+          {parseInt(month.toString( ),10)+1}/{year}
+        </h1>
     </StyledApp>
   );
 }

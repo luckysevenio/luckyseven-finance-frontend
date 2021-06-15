@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 import Carta from './components/Carta';
 import Navbar from './components/Navbar';
-
 import Filter from './components/Filter';
+import Footer from './components/Footer'
 
 const StyledApp = styled.div`
   .app{
     font-family: 'Oxygen', sans-serif;
-    min-height: 100vh;
     background: rgb(238, 69, 64);
     background: linear-gradient(
     180deg,
@@ -19,15 +18,26 @@ const StyledApp = styled.div`
     rgba(45, 20, 44, 1) 100%
   );
   }
+  .body{
+    min-height:calc(100vh - 15rem)
+  }
+  @media only screen and (max-width: 1000px){
+    .body{
+      min-height: calc(100vh - 23rem)
+    }
+  }
 `;
 
 export function App() {
   return (
     <StyledApp>
       <div className="app">
-        <Navbar></Navbar>
-        <Filter></Filter>
-        <Carta></Carta>
+        <div className="body">
+          <Navbar></Navbar>
+          <Filter></Filter>
+          <Carta></Carta>
+        </div>
+        <Footer/>
       </div>
     </StyledApp>
   );

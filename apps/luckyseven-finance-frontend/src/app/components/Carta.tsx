@@ -6,13 +6,10 @@ import { State } from '../../store';
 const StyledApp = styled.div`
 .container{
   justify-content:center;
-  align-items : center;
-  height:100; 
+  align-items : center; 
   margin-top: 5rem;
 }
-.row{
-  margin-bottom: 2rem;
-}
+
 .col-md-4.animate__animated.animate__zoomIn{
   margin-bottom: 2rem;
 }

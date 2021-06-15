@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { getCharacter } from './app/utils/endpoints';
 
 const initialState = {
-  year: 0,
+  year: 2021,
   month: 0,
   transactions: null
 };
