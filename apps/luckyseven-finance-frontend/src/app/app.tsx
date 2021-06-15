@@ -1,36 +1,35 @@
+import styled from 'styled-components';
+
 import Carta from './components/Carta';
-import Navbar from './components/navbar';
-import Paginacion from './components/Paginacion';
-import Titulo from './components/Titulo';
-import './components/style.css'
-import { useEffect } from 'react';
-import { getCharacter } from './utils/endpoints';
-import { useDispatch } from 'react-redux';
-import { ActionTypes } from '../store';
+import Navbar from './components/Navbar';
 
+import Filter from './components/Filter';
 
+const StyledApp = styled.div`
+  .app{
+    font-family: 'Oxygen', sans-serif;
+    height: 100vh;
+    background: rgb(238, 69, 64);
+    background: linear-gradient(
+    180deg,
+    rgba(238, 69, 64, 1) 0%,
+    rgba(199, 44, 65, 1) 15%,
+    rgba(128, 19, 54, 1) 30%,
+    rgba(81, 10, 50, 1) 45%,
+    rgba(45, 20, 44, 1) 100%
+  );
+  }
+`;
 
 export function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    async function callCharacter() {
-      const response = await getCharacter('character');
-      dispatch({
-        type: ActionTypes.STORE_CHARACTERS,
-        payload: response,
-      });
-    }
-    callCharacter();
-    return;
-  },[]);
   return (
-    <div className="App">
-      <Navbar></Navbar>
-      <Titulo></Titulo>
-      <Paginacion></Paginacion>
-      <Carta></Carta>
-      <Paginacion></Paginacion>
-    </div>
+    <StyledApp>
+      <div className="app">
+        <Navbar></Navbar>
+        <Filter></Filter>
+        <Carta></Carta>
+      </div>
+    </StyledApp>
   );
 }
 

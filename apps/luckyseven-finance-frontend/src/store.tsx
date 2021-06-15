@@ -1,61 +1,66 @@
 /* eslint-disable indent */
+import axios from 'axios';
 import React, { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { getCharacter } from './app/utils/endpoints';
 
 const initialState = {
-  nameFilter: '',
-  pageNumber: 1,
-  raceFilter: '',
-  characters: null
+  year: 0,
+  month: 0,
+  transactions: null
 };
 
 export type State = typeof initialState;
 
 export enum ActionTypes {
-  'CHANGE_FILTER' = 'CHANGE_FILTER',
-  'CHANGE_PAGE_NUMBER' = 'CHANGE_PAGE_NUMBER',
-  'CHANGE_RACE_FILTER' = 'CHANGE_RACE_FILTER',
-  'STORE_CHARACTERS' = 'STORE_CHARACTERS',
+  'STORE_YEAR'='STORE_YEAR',
+  'STORE_MONTH'='STORE_MONTH',
+  'STORE_TRANSACTION' = 'STORE_TRANSACTION'
 }
 
 type Action =
-  | { type: ActionTypes.CHANGE_FILTER; payload: string }
-  | { type: ActionTypes.CHANGE_PAGE_NUMBER; payload: number }
-  | { type: ActionTypes.CHANGE_RACE_FILTER; payload: string }
-  | { type: ActionTypes.STORE_CHARACTERS; payload: any };
+  | { type: ActionTypes.STORE_YEAR; payload: number }
+  | { type: ActionTypes.STORE_MONTH; payload: number }
+  | { type: ActionTypes.STORE_TRANSACTION; payload: any };
 
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case ActionTypes.CHANGE_FILTER: {
+    case ActionTypes.STORE_YEAR: {
       return {
         ...state,
-        nameFilter: action.payload,
+        year: action.payload,
       };
     }
-    case ActionTypes.CHANGE_PAGE_NUMBER: {
+    case ActionTypes.STORE_MONTH: {
       return {
         ...state,
-        pageNumber: action.payload,
+        month: action.payload,
       };
     }
-    case ActionTypes.CHANGE_RACE_FILTER: {
-      return {
-        ...state,
-        raceFilter: action.payload,
-      };
-    }
-    case ActionTypes.STORE_CHARACTERS:{
+    case ActionTypes.STORE_TRANSACTION:{
       return{
         ...state,
-        characters: action.payload,
+        transactions: action.payload,
       };
     }
     default: {
       return state;
     }
+  }
+}
+
+export const getTransactions =(month,year)=>async(dispatch, getState)=>{
+  try {
+      const res = await axios.get(`http://localhost:1337/withdraws/${year}/${month}`);
+      dispatch({
+          type: ActionTypes.STORE_TRANSACTION,
+          payload: res.data
+      })
+  } catch (error) {
+      console.log(error);   
   }
 }
 

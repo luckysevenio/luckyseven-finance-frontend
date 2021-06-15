@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseurl = 'https://rickandmortyapi.com/api/';
+const baseurl = 'http://localhost:1337/withdraws/';
 
 export const getCharacter = async (api) => {
   try {

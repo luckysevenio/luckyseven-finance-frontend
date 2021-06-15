@@ -1,38 +1,43 @@
-import Character from '../utils/Character';
+import styled from 'styled-components';
+
 import { useSelector } from 'react-redux';
 import { State } from '../../store';
 
+const StyledApp = styled.div`
+.container{
+  justify-content:center;
+  align-items : center;
+  height:100;
+}
+.
+`;
 function Carta() {
-  const name = useSelector((state: State) => state.nameFilter);
-  const characters = useSelector((state: State) => state.characters);
+  const transactions = useSelector((state: State) => state.transactions);
 
   return (
-    <div className="container justify-content-center align-items-center">
-      <div className="row">
-        {characters?.results?.map(
-          (psj) =>
-            new RegExp(`${name}`, 'i').test(psj.name) && (
-              <div className="col-md-3 animate__animated animate__zoomIn">
-                <div
-                  className="card text-center"
-                  key={psj.id}
-                >
-                  <img
-                    src={psj.image}
-                    className="card-img-top"
-                  ></img>
-                  <div className="card-body">
-                    <h1 style={{ fontSize: '2rem', textAlign: 'center' }}>
-                      {psj.name}
-                    </h1>
-                    <p className="card-title">{psj.species}</p>
+    <StyledApp>
+      <div className="container ">
+        <div className="row">
+          {transactions?.map(
+            (trs,index) =>
+                <div className="col-md-3 animate__animated animate__zoomIn">
+                  <div
+                    className="card text-center"
+                    key={index}
+                  >
+                    <div className="card-body">
+                      <h1>
+                        {trs.amount}
+                      </h1>
+                      <p className="card-title">{trs.organization}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-        )}
+              )
+          }
+        </div>
       </div>
-    </div>
+    </StyledApp>
   );
 }
 export default Carta;
