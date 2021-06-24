@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 const StyledApp = styled.div`
 .footer{
-  border:1px solid;
   height: 15rem; 
   width: 100%;
   color: white;
-  background-color: #343a40;
+  background-color: #171b22;
 }
 @media only screen and (max-width: 1000px){
   .footer{
@@ -30,7 +29,7 @@ function Footer() {
                   <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
                     <h5 className="text-uppercase">Direccion</h5>
                     <p>
-                    Avenida Providencia 1208, OF 207 2P, Providencia
+                    Avenida Providencia  ....
                     </p>
                   </div>
                 </div>

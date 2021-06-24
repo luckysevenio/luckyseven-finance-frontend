@@ -15,8 +15,9 @@ const StyledApp = styled.div`
 }
 .card-transaction{
   text-align: center;
-  background-color: #343a40;
-  color: white;
+  background-color: #8db1ab;
+  color: black;
+  border: 1px solid
 }
 .card-text{
   color: gray;
@@ -28,6 +29,11 @@ const StyledApp = styled.div`
 `;
 function Carta() {
   const transactions = useSelector((state: State) => state.transactions);
+  const formatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    minimumFractionDigits: 0
+  });
 
   return (
     <StyledApp>
@@ -43,7 +49,7 @@ function Carta() {
                     <div className="card-body">
                       <h1>Amount:</h1>
                       <h1 className="amount">
-                        {trs.amount}
+                        {formatter.format(trs.amount)}
                       </h1>
                       <h4 className="card-title">Description:</h4>
                       <p className="card-text">{trs.description}</p>

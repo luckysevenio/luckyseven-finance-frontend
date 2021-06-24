@@ -16,8 +16,12 @@ const StyledApp= styled.div`
 }
 .displayDate{
     text-align  :center;
+    color: white  
 }
-  
+.btn{
+  background-color: #8db1ab;
+  border: 1px solid;
+}
 `;
 function Filter() {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -60,7 +64,7 @@ function Filter() {
         <div className="filter">
             <div className="dropdown">
                 <button
-                    className="btn btn-dark dropdown-toggle"
+                    className="btn dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
@@ -85,7 +89,7 @@ function Filter() {
               </div>
               <div className="dropdown">
                 <button
-                    className="btn btn-dark dropdown-toggle"
+                    className="btn dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
@@ -108,7 +112,7 @@ function Filter() {
                     </li>
                 </ul>
               </div>
-              <button className="btn btn-dark" onClick={submitFilter}>
+              <button className="btn" onClick={submitFilter}>
                   Display
               </button>
           </div>

@@ -9,7 +9,8 @@ import { getCharacter } from './app/utils/endpoints';
 const initialState = {
   year: 2021,
   month: 0,
-  transactions: null
+  transactions: null,
+  lastresult: null
 };
 
 export type State = typeof initialState;
@@ -17,13 +18,15 @@ export type State = typeof initialState;
 export enum ActionTypes {
   'STORE_YEAR'='STORE_YEAR',
   'STORE_MONTH'='STORE_MONTH',
-  'STORE_TRANSACTION' = 'STORE_TRANSACTION'
+  'STORE_TRANSACTION' = 'STORE_TRANSACTION',
+  'STORE_LAST_RESULT'='STORE_LAST_RESULT'
 }
 
 type Action =
   | { type: ActionTypes.STORE_YEAR; payload: number }
   | { type: ActionTypes.STORE_MONTH; payload: number }
-  | { type: ActionTypes.STORE_TRANSACTION; payload: any };
+  | { type: ActionTypes.STORE_TRANSACTION; payload: any }
+  | { type: ActionTypes.STORE_LAST_RESULT; payload: any };
 
 
 export function reducer(state: State, action: Action): State {
@@ -44,6 +47,12 @@ export function reducer(state: State, action: Action): State {
       return{
         ...state,
         transactions: action.payload,
+      };
+    }
+    case ActionTypes.STORE_LAST_RESULT:{
+      return{
+        ...state,
+        lastresult: action.payload,
       };
     }
     default: {
