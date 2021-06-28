@@ -5,6 +5,9 @@ import Navbar from './components/Navbar';
 import Filter from './components/Filter';
 import Footer from './components/Footer'
 import Resultstate from './components/Resultstate';
+import UserSignUP from './components/UserSignUp';
+import UserLogIn from './components/UserLogIn';
+
 
 const StyledApp = styled.div`
   .app{
@@ -27,6 +30,9 @@ export function App() {
       <div className="app">
         <div className="body">
           <Navbar></Navbar>
+          <UserSignUP/>
+          <br/>
+          <UserLogIn/>
           <Resultstate/>
           <Filter></Filter>
           <Carta></Carta>
