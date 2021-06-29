@@ -10,7 +10,8 @@ const initialState = {
   month: 0,
   transactions: null,
   lastresult: null,
-  email_user:''
+  user: null,
+  user_balances: null
 };
 
 export type State = typeof initialState;
@@ -20,7 +21,8 @@ export enum ActionTypes {
   'STORE_MONTH'='STORE_MONTH',
   'STORE_TRANSACTION' = 'STORE_TRANSACTION',
   'STORE_LAST_RESULT'='STORE_LAST_RESULT',
-  'STORE_EMAIL_USER'='STORE_EMAIL_USER'
+  'STORE_USER'='STORE_USER',
+  'STORE_BALANCES'='STORE_BALANCES'
 }
 
 type Action =
@@ -28,7 +30,8 @@ type Action =
   | { type: ActionTypes.STORE_MONTH; payload: number }
   | { type: ActionTypes.STORE_TRANSACTION; payload: any }
   | { type: ActionTypes.STORE_LAST_RESULT; payload: any }
-  | { type: ActionTypes.STORE_EMAIL_USER; payload: string };
+  | { type: ActionTypes.STORE_USER; payload: any }
+  | { type: ActionTypes.STORE_BALANCES; payload: any }
 
 
 export function reducer(state: State, action: Action): State {
@@ -57,10 +60,16 @@ export function reducer(state: State, action: Action): State {
         lastresult: action.payload,
       };
     }
-    case ActionTypes.STORE_EMAIL_USER:{
+    case ActionTypes.STORE_USER:{
       return{
         ...state,
-        email_user:action.payload,
+        user:action.payload,
+      }
+    }
+    case ActionTypes.STORE_BALANCES:{
+      return{
+        ...state,
+        user_balances:action.payload,
       }
     }
     default: {

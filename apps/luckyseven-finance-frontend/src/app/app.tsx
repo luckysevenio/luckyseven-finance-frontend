@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Resultstate from './components/Resultstate';
 import UserSignUP from './components/UserSignUp';
 import UserLogIn from './components/UserLogIn';
+import Balances from './components/Balances';
 
 
 const StyledApp = styled.div`
@@ -33,6 +34,7 @@ export function App() {
           <UserSignUP/>
           <br/>
           <UserLogIn/>
+          <Balances/>
           <Resultstate/>
           <Filter></Filter>
           <Carta></Carta>
