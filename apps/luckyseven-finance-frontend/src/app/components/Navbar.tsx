@@ -49,19 +49,13 @@ function Navbar() {
           Luckyseven
           <img src={L7} className="img" alt="L7"/>
         </a>
-        <ul className="navbar-nav"> 
-          <form className="d-flex" onSubmit={handleSubmit}>
-            <input
-              className="form-control me-2"
-              type="number"
-              placeholder="Result State"
-              onChange={handleChange}
-              name="ResultState"
-            ></input>
-            <button className="btn btn-outline" type="submit">
-              Submit
-            </button>
-          </form>
+        <ul className="navbar-nav">   
+          <button className="btn btn-outline" type="submit">
+            Iniciar Sesion
+          </button>
+          <button className="btn btn-outline" type="submit">
+            Registrarse
+          </button>
         </ul>
       </div>
     </nav>

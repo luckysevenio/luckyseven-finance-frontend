@@ -1,7 +1,7 @@
 import axios from 'axios';
-const baseurl = 'http://localhost:1337/withdraws/';
+const baseurl = 'http://localhost:1337/';
 
-export const getCharacter = async (api) => {
+export const callApi = async (api) => {
   try {
     const { data } = await axios({
       method: 'get',

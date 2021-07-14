@@ -8,6 +8,13 @@ import Resultstate from './components/Resultstate';
 import UserSignUP from './components/UserSignUp';
 import UserLogIn from './components/UserLogIn';
 import Balances from './components/Balances';
+import Actions from './components/Actions';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { ActionTypes } from '../store';
+import { api_key, email, url_b_zap } from "./constants";
+import { callApi } from './utils/endpoints';
 
 
 const StyledApp = styled.div`
@@ -26,18 +33,46 @@ const StyledApp = styled.div`
 `;
 
 export function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    async function callCharacter() {
+      const user = await callApi(`user-addresses/find/${email}`);
+      const result_s = await callApi(`results/last/getLast`);    
+      let url_addresses = '';
+      user.Addresses.forEach(element => {
+        url_addresses+=`?addresses%5B%5D=${element}&`
+      });
+      const url = `${url_b_zap}${url_addresses}network=ethereum&api_key=${api_key}`
+      const balances = await axios.get(url)
+      const dolar = await axios.get('https://mindicador.cl/api/dolar')
+      dispatch({
+        type: ActionTypes.STORE_USER,
+        payload: user,
+      })
+      dispatch({
+        type: ActionTypes.STORE_BALANCES,
+        payload: balances.data,
+      })
+      dispatch({
+        type: ActionTypes.STORE_LAST_RESULT,
+        payload: result_s,
+      })
+      dispatch({
+        type: ActionTypes.STORE_DOLAR,
+        payload: dolar.data['serie'][0]['valor']
+      })
+    }
+  callCharacter();
+  return;
+},[]);
   return (
     <StyledApp>
       <div className="app">
         <div className="body">
           <Navbar></Navbar>
-          <UserSignUP/>
-          <br/>
-          <UserLogIn/>
-          <Balances/>
-          <Resultstate/>
-          <Filter></Filter>
-          <Carta></Carta>
+          <Actions></Actions>
+          <Resultstate></Resultstate>
+          <Balances></Balances>
         </div>
         <Footer/>
       </div>

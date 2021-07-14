@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { ActionTypes, State } from '../../store';
@@ -35,61 +36,46 @@ function Balances() {
         currency: 'CLP',
         minimumFractionDigits: 0
       });
-    const user = useSelector((state: State)=>state.user);
     const user_balances = useSelector((state: State)=>state.user_balances)
-    const dispatch = useDispatch()
-    let url_addresses= '';
-    async function callZapper(){
-        let balance=0;
-        user.Addresses.forEach(element => {
-            url_addresses+=`?addresses%5B%5D=${element}&`
-        });
-        const url = `${url_b_zap}${url_addresses}network=ethereum&api_key=${api_key}`
-        console.log(url);
-        const response = await axios.get(url);
-        dispatch({
-            type: ActionTypes.STORE_BALANCES,
-            payload: response.data
-        })
-        Object.values(response.data)[0]['products'][0]['assets'].forEach(element => {
-            balance+=element.balanceUSD;
-        });
-        console.log(Object.values(response.data)[0]['meta'][0]['value']);
-        console.log(balance);
-        
-        return balance; 
-    }
+    const dolar = useSelector((state:State)=>state.dolar)
     return (
         <StyledApp>
-            <div className="balances">
-                <button className="btn" onClick={callZapper}>Get Balances</button>
-                <div className="container">
-                    <div className="row"> 
-                        <div className="col-md-3 animate__animated animate__zoomIn">
+            <div className="container">
+                <div className="row"> 
+                    <div className="col-md-6 animate__animated animate__zoomIn">
+                        <div className="card-USD">
+                            <div className="card-body">
+                                <p>Balance en USD:</p>
+                                    {(user_balances!=null)?
+                                    <p className="amount">
+                                        {formatter.format(Object.values(user_balances)[0]['meta'][0]['value'])} USD
+                                    </p>
+                                    :
+                                    <p className="amount">
+                                        {formatter.format(0)} USD
+                                    </p>                                                                  
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 animate__animated animate__zoomIn">
                             <div className="card-USD">
                                 <div className="card-body">
-                                    <p>BalanceUSD:</p>
-                                    {(user_balances!=null)?
+                                    <p>Balance en CLP:</p>
+                                        {(user_balances!=null)?
                                         <p className="amount">
-                                            {formatter.format(Object.values(user_balances)[0]['meta'][0]['value'])} USD
+                                            {formatter.format(Object.values(user_balances)[0]['meta'][0]['value']*dolar)} CLP
                                         </p>
                                         :
                                         <p className="amount">
                                             {formatter.format(0)} USD
                                         </p>                                                                  
-                                    }
-                                    <h4 className="card-title"></h4>
-                                    <p className="card-text"></p>
-                                    <h4 className="card-title"></h4>
-                                    <p className="card-text"></p>
-                                    <h4 className="card-title"></h4>
-                                    <p className="card-text"></p>
+                                        }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </StyledApp>
     )
 }

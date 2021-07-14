@@ -25,19 +25,7 @@ const StyledApp= styled.div`
 }
 `
 function Resultstate() {
-    const dispatch = useDispatch();
     const result = useSelector((state: State)=>state.lastresult)
-    useEffect(() => {
-        async function callCharacter() {
-          const response = await axios.get('http://localhost:1337/results/last/getLast');
-          dispatch({
-            type: ActionTypes.STORE_LAST_RESULT,
-            payload: response.data,
-          });
-        }
-        callCharacter();
-        return;
-      },[]);
     const formatter = new Intl.NumberFormat('es-CL', {
         style: 'currency',
         currency: 'CLP',
@@ -45,21 +33,21 @@ function Resultstate() {
     });
     return (  
         <StyledApp>
-        <div className="display-result">
-            {result?.map(
-                (res,index)=>
+            <div className="display-result">
                 <div className="col-md-4 animate__animated animate__zoomIn">                        
-                    <div className="card-result" key={index}>
+                    <div className="card-result">
                         <div className="card-body">
-                            <h1>Last Result State</h1>
-                            <hr/>
-                            <p className="last-result">{formatter.format(res.ResultState)} CLP</p>
+                            <h1>Ultimo estado de resultado</h1>
+                                <hr/>
+                            {(result!=null)?
+                            <p className="last-result">{formatter.format(result[0].ResultState)} CLP</p>
+                            :
+                            <p className="last-result">{formatter.format(0)} CLP</p>
+                            }
                         </div>
                     </div>
                 </div>
-            )}
             </div>
-        
         </StyledApp>
     )
 }
