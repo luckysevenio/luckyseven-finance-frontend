@@ -11,7 +11,7 @@ const initialState = {
   transactions: null,
   lastresult: null,
   user: null,
-  user_balances: null,
+  user_balances: 0,
   dolar: 0,
 };
 
@@ -33,7 +33,7 @@ type Action =
   | { type: ActionTypes.STORE_TRANSACTION; payload: any }
   | { type: ActionTypes.STORE_LAST_RESULT; payload: any }
   | { type: ActionTypes.STORE_USER; payload: any }
-  | { type: ActionTypes.STORE_BALANCES; payload: any }
+  | { type: ActionTypes.STORE_BALANCES; payload: number }
   | { type: ActionTypes.STORE_DOLAR; payload: number }
 
 

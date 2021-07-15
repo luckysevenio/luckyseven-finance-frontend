@@ -48,7 +48,7 @@ function Balances() {
                                 <p>Balance en USD:</p>
                                     {(user_balances!=null)?
                                     <p className="amount">
-                                        {formatter.format(Object.values(user_balances)[0]['meta'][0]['value'])} USD
+                                        {formatter.format(user_balances)} USD
                                     </p>
                                     :
                                     <p className="amount">
@@ -64,7 +64,7 @@ function Balances() {
                                     <p>Balance en CLP:</p>
                                         {(user_balances!=null)?
                                         <p className="amount">
-                                            {formatter.format(Object.values(user_balances)[0]['meta'][0]['value']*dolar)} CLP
+                                            {formatter.format(user_balances*dolar)} CLP
                                         </p>
                                         :
                                         <p className="amount">

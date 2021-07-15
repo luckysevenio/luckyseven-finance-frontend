@@ -38,12 +38,7 @@ export function App() {
     async function callCharacter() {
       const user = await callApi(`user-addresses/find/${email}`);
       const result_s = await callApi(`results/last/getLast`);    
-      let url_addresses = '';
-      user.Addresses.forEach(element => {
-        url_addresses+=`?addresses%5B%5D=${element}&`
-      });
-      const url = `${url_b_zap}${url_addresses}network=ethereum&api_key=${api_key}`
-      const balances = await axios.get(url)
+      const balance = await callApi(`user-addresses/getBalances/${email}`)
       const dolar = await axios.get('https://mindicador.cl/api/dolar')
       dispatch({
         type: ActionTypes.STORE_USER,
@@ -51,7 +46,7 @@ export function App() {
       })
       dispatch({
         type: ActionTypes.STORE_BALANCES,
-        payload: balances.data,
+        payload: balance
       })
       dispatch({
         type: ActionTypes.STORE_LAST_RESULT,
