@@ -6,6 +6,13 @@ import { ActionTypes, State } from '../../store';
 import { api_key, url_b_zap } from '../constants'
 
 const StyledApp = styled.div`
+.container{
+    margin:auto;
+}
+.row{
+    justify-content:center;
+    margin: auto;
+}
 .balances{
    text-align: center
 }
@@ -36,7 +43,7 @@ function Balances() {
         currency: 'CLP',
         minimumFractionDigits: 0
       });
-    const user_balances = useSelector((state: State)=>state.user_balances)
+    const NW = useSelector((state: State)=>state.net_worth)
     const dolar = useSelector((state:State)=>state.dolar)
     return (
         <StyledApp>
@@ -46,9 +53,9 @@ function Balances() {
                         <div className="card-USD">
                             <div className="card-body">
                                 <p>Balance en USD:</p>
-                                    {(user_balances!=null)?
+                                    {(NW!=null)?
                                     <p className="amount">
-                                        {formatter.format(user_balances)} USD
+                                        {formatter.format(NW[0].Balance)} USD
                                     </p>
                                     :
                                     <p className="amount">
@@ -62,9 +69,9 @@ function Balances() {
                             <div className="card-USD">
                                 <div className="card-body">
                                     <p>Balance en CLP:</p>
-                                        {(user_balances!=null)?
+                                        {(NW!=null)?
                                         <p className="amount">
-                                            {formatter.format(user_balances*dolar)} CLP
+                                            {formatter.format(NW[0].Balance*dolar)} CLP
                                         </p>
                                         :
                                         <p className="amount">

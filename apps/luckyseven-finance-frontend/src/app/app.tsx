@@ -15,6 +15,10 @@ import { useEffect } from 'react';
 import { ActionTypes } from '../store';
 import { api_key, email, url_b_zap } from "./constants";
 import { callApi } from './utils/endpoints';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import NetWorth from './components/NetWorth';
+import FormRS from './components/FormRS';
+import FormNW from './components/FormNW';
 
 
 const StyledApp = styled.div`
@@ -23,7 +27,7 @@ const StyledApp = styled.div`
     background-color:#0c1117;
   }
   .body{
-    min-height:calc(100vh - 15rem)
+    min-height:calc(100vh - 370px);
   }
   @media only screen and (max-width: 1000px){
     .body{
@@ -37,7 +41,8 @@ export function App() {
   useEffect(() => {
     async function callCharacter() {
       const user = await callApi(`user-addresses/find/${email}`);
-      const result_s = await callApi(`results/last/getLast`);    
+      const result_s = await callApi(`results/last/getLast`);
+      const total_NW= await callApi('net-worth/last/getLast')    
       const balance = await callApi(`user-addresses/getBalances/${email}`)
       const dolar = await axios.get('https://mindicador.cl/api/dolar')
       dispatch({
@@ -53,6 +58,10 @@ export function App() {
         payload: result_s,
       })
       dispatch({
+        type: ActionTypes.STORE_NW,
+        payload: total_NW,
+      })
+      dispatch({
         type: ActionTypes.STORE_DOLAR,
         payload: dolar.data['serie'][0]['valor']
       })
@@ -62,15 +71,30 @@ export function App() {
 },[]);
   return (
     <StyledApp>
-      <div className="app">
-        <div className="body">
-          <Navbar></Navbar>
-          <Actions></Actions>
-          <Resultstate></Resultstate>
-          <Balances></Balances>
+      <Router>
+        <div className="app">
+            <Navbar/>
+            <Actions/>
+            <div className="body">
+            <Switch>
+              <Route path="/estado-resultado">
+                <Resultstate/>
+                <NetWorth/>
+              </Route>
+              <Route path="/last-result/upload">
+                <FormRS/>
+              </Route>
+              <Route path="/net-worth/upload">
+                <FormNW/>
+              </Route>
+              <Route path="/">
+                <Balances/>
+              </Route>
+            </Switch>
+          </div>
+          <Footer/>
         </div>
-        <Footer/>
-      </div>
+      </Router>
     </StyledApp>
   );
 }

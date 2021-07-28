@@ -13,3 +13,11 @@ export const callApi = async (api) => {
     console.log(error);
   }
 };
+export const postApi = async (api,payload) => {
+  const url=baseurl + api;
+  try {
+    await axios.post(`${url}`,payload);
+  } catch (error) {
+    console.log(error);
+  }
+};

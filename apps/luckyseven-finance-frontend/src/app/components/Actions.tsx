@@ -36,8 +36,8 @@ function Actions() {
                           Precio del dolar: {`${dolar}`} CLP  
                         </p>
                         <ul className="navbar-nav">
-                            <a className="navbar-brand">
-                                Estado de resultados
+                            <a className="navbar-brand" href="/estado-resultado">
+                                Estado de resultado y Balance Neto
                             </a>
                             <a className="navbar-brand">
                                 Transacciones
