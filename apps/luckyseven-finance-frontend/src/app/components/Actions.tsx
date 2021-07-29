@@ -42,8 +42,8 @@ function Actions() {
                             <a className="navbar-brand">
                                 Transacciones
                             </a>
-                            <a className="navbar-brand">
-                                Direcciones
+                            <a className="navbar-brand" href="/pagos">
+                                Pagos
                             </a>
                             <a className="navbar-brand">
                                 Balances

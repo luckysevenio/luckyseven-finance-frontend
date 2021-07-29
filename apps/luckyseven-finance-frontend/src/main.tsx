@@ -6,6 +6,7 @@ import 'animate.css/animate.min.css'
 import App from './app/app';
 import { AppProvider } from './store';
 
+
 ReactDOM.render(
   <StrictMode>
     <AppProvider>

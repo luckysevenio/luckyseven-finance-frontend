@@ -14,6 +14,7 @@ const initialState = {
   user_balances: 0,
   dolar: 0,
   net_worth:null,
+  payment:null
 };
 
 export type State = typeof initialState;
@@ -26,7 +27,8 @@ export enum ActionTypes {
   'STORE_USER'='STORE_USER',
   'STORE_BALANCES'='STORE_BALANCES',
   'STORE_DOLAR'='STORE_DOLAR',
-  'STORE_NW'='STORE_NW'
+  'STORE_NW'='STORE_NW',
+  'STORE_PAYMENT'='STORE_PAYMENT'
 }
 
 type Action =
@@ -38,6 +40,7 @@ type Action =
   | { type: ActionTypes.STORE_BALANCES; payload: number }
   | { type: ActionTypes.STORE_DOLAR; payload: number }
   | { type: ActionTypes.STORE_NW; payload: any }
+  | { type: ActionTypes.STORE_PAYMENT; payload: any }
 
 
 export function reducer(state: State, action: Action): State {
@@ -88,6 +91,12 @@ export function reducer(state: State, action: Action): State {
       return{
         ...state,
         net_worth: action.payload
+      }
+    }
+    case ActionTypes.STORE_PAYMENT:{
+      return{
+        ...state,
+        payment: action.payload
       }
     }
     default: {

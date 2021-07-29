@@ -13,12 +13,13 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ActionTypes } from '../store';
-import { api_key, email, url_b_zap } from "./constants";
+import { email } from "./constants";
 import { callApi } from './utils/endpoints';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import NetWorth from './components/NetWorth';
 import FormRS from './components/FormRS';
 import FormNW from './components/FormNW';
+import Payments from './components/Payments';
 
 
 const StyledApp = styled.div`
@@ -44,6 +45,7 @@ export function App() {
       const result_s = await callApi(`results/last/getLast`);
       const total_NW= await callApi('net-worth/last/getLast')    
       const balance = await callApi(`user-addresses/getBalances/${email}`)
+      const payment = await callApi(`payments/List/${email}`)
       const dolar = await axios.get('https://mindicador.cl/api/dolar')
       dispatch({
         type: ActionTypes.STORE_USER,
@@ -60,6 +62,10 @@ export function App() {
       dispatch({
         type: ActionTypes.STORE_NW,
         payload: total_NW,
+      })
+      dispatch({
+        type: ActionTypes.STORE_PAYMENT,
+        payload: payment
       })
       dispatch({
         type: ActionTypes.STORE_DOLAR,
@@ -86,6 +92,10 @@ export function App() {
               </Route>
               <Route path="/net-worth/upload">
                 <FormNW/>
+              </Route>
+              <Route path="/pagos">
+                <hr/>
+                <Payments/>
               </Route>
               <Route path="/">
                 <Balances/>
