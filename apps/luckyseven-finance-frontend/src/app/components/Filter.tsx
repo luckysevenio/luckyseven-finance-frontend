@@ -30,10 +30,6 @@ function Filter() {
   const year = useSelector((state: State)=>state.year);
   const month = useSelector((state: State) => state.month)
 
-  const [datos,setDatos]=useState({
-    year:''
-  })
-
 
   const handleFilterYear = (event) => {
     dispatch({

@@ -1,12 +1,10 @@
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { ActionTypes, State } from '../../store';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { State } from '../../store';
 
 const StyledApp= styled.div`
-.display-result{
+.display-networth{
     display:grid;
     justify-content:center;
     align-items:center;
@@ -25,8 +23,8 @@ const StyledApp= styled.div`
     text-align: center;
 }
 `
-function Resultstate() {
-    const result = useSelector((state: State)=>state.lastresult)
+function NetWorth() {
+    const networth = useSelector((state: State)=>state.net_worth)
     const formatter = new Intl.NumberFormat('es-CL', {
         style: 'currency',
         currency: 'CLP',
@@ -34,20 +32,18 @@ function Resultstate() {
     });
     return (  
         <StyledApp>
-            <div className="display-result">
+            <div className="display-networth">
                 <div className="col-md-4 animate__animated animate__zoomIn">                        
                     <div className="card-result">
                         <div className="card-body">
-                            <h1>Ultimo estado de resultado</h1>
+                            <h1>Ultimo Net Worth Ingresado:</h1>
                                 <hr/>
-                            {(result!=null)?
-                            <div>
-                                <p className="last-result">{formatter.format(result[0].ResultState)} CLP</p>
-                            </div>
+                            {(networth!=null)?
+                            <p className="last-networth">{formatter.format(networth[0].Balance)} USD</p>
                             :
-                            <p className="last-result">{formatter.format(0)} CLP</p>
+                            <p className="last-networth">{formatter.format(0)} USD</p>
                             }
-                            <a className="btn btn-dark" href="/last-result/upload">Actualizar</a>
+                            <a className="btn btn-dark" href="/net-worth/upload">Actualizar</a>
                         </div>
                     </div>
                 </div>
@@ -56,4 +52,4 @@ function Resultstate() {
     )
 }
 
-export default Resultstate
+export default NetWorth

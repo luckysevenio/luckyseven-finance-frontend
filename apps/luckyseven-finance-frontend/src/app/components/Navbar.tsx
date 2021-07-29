@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { ActionTypes } from "../../store";
 import L7 from "../images/L7.jpeg";
 
 const StyledApp = styled.div`
@@ -45,23 +43,17 @@ function Navbar() {
     <StyledApp>
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           Luckyseven
           <img src={L7} className="img" alt="L7"/>
         </a>
-        <ul className="navbar-nav"> 
-          <form className="d-flex" onSubmit={handleSubmit}>
-            <input
-              className="form-control me-2"
-              type="number"
-              placeholder="Result State"
-              onChange={handleChange}
-              name="ResultState"
-            ></input>
-            <button className="btn btn-outline" type="submit">
-              Submit
-            </button>
-          </form>
+        <ul className="navbar-nav">   
+          <button className="btn btn-outline" type="submit">
+            Iniciar Sesion
+          </button>
+          <button className="btn btn-outline" type="submit">
+            Registrarse
+          </button>
         </ul>
       </div>
     </nav>
