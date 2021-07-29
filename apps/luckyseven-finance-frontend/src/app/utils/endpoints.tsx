@@ -1,6 +1,8 @@
 import axios from 'axios';
 const baseurl =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:1337/' : 'caca';
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:1337/'
+    : 'https://luckyseven-backend.herokuapp.com/';
 
 export const callApi = async (api) => {
   try {
