@@ -8,14 +8,13 @@ import { api_key, url_b_zap } from '../constants'
 const StyledApp = styled.div`
 .container{
     margin:auto;
+    padding-top: 20vh;
 }
 .row{
     justify-content:center;
     margin: auto;
 }
-.balances{
-   text-align: center
-}
+
 .btn{
     background-color:#8db1ab;
 }
