@@ -30,6 +30,7 @@ function NetWorth() {
         currency: 'CLP',
         minimumFractionDigits: 0
     });
+    console.log(networth.length);
     return (  
         <StyledApp>
             <div className="display-networth">
@@ -38,7 +39,7 @@ function NetWorth() {
                         <div className="card-body">
                             <h1>Ultimo Net Worth Ingresado:</h1>
                                 <hr/>
-                            {(networth!=null)?
+                            {(networth.length)?
                             <p className="last-networth">{formatter.format(networth[0].Balance)} USD</p>
                             :
                             <p className="last-networth">{formatter.format(0)} USD</p>

@@ -9,11 +9,11 @@ const initialState = {
   year: 2021,
   month: 0,
   transactions: null,
-  lastresult: null,
+  lastresult: [],
   user: null,
   user_balances: 0,
   dolar: 0,
-  net_worth:null,
+  net_worth:[],
   payment:null
 };
 

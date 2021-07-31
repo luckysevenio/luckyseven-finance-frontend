@@ -40,7 +40,7 @@ function Resultstate() {
                         <div className="card-body">
                             <h1>Ultimo estado de resultado</h1>
                                 <hr/>
-                            {(result!=null)?
+                            {(result.length)?
                             <div>
                                 <p className="last-result">{formatter.format(result[0].ResultState)} CLP</p>
                             </div>

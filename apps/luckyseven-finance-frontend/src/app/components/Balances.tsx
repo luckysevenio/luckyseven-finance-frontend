@@ -25,7 +25,7 @@ const StyledApp = styled.div`
     text-align: center;
     background-color: #8db1ab;
     color: black;
-    border: 1px solid
+    border: 1px solid;
     min-width: 10rem;
 }
 .card-text{
@@ -33,7 +33,7 @@ const StyledApp = styled.div`
     font-family: Arial, Helvetica, sans-serif;
 }
 .amount{
-    color: red
+    color: red;
 }
 `
 function Balances() {
@@ -52,7 +52,7 @@ function Balances() {
                         <div className="card-USD">
                             <div className="card-body">
                                 <p>Balance en USD:</p>
-                                    {(NW!=null)?
+                                    {(NW.length)?
                                     <p className="amount">
                                         {formatter.format(NW[0].Balance)} USD
                                     </p>
@@ -68,7 +68,7 @@ function Balances() {
                             <div className="card-USD">
                                 <div className="card-body">
                                     <p>Balance en CLP:</p>
-                                        {(NW!=null)?
+                                        {(NW.length)?
                                         <p className="amount">
                                             {formatter.format(NW[0].Balance*dolar)} CLP
                                         </p>
