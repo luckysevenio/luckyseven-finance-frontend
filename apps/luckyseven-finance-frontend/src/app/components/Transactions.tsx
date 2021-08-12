@@ -45,7 +45,7 @@ const StyledApp = styled.div`
 `
 
 function Transactions() {
-    const payments = useSelector((state: State) => state.payment)
+    const regexes = useSelector((state: State) => state.regexes)
     const [regex, setRegex] = useState({ owner: email, regex: '' })
     const handleChange = (event) => {
         setRegex({ ...regex, [event.target.name]: event.target.value })
@@ -88,14 +88,14 @@ function Transactions() {
                         </tr>
                     </thead>
                     <tbody>
-                        {payments?.map((pay, index) => (
+                        {regexes?.map((regex, index) => (
                             <tr style={{verticalAlign:'center'}}>
                                 <th scope="row" >{index + 1}</th>
-                                <td>{pay.Year}/{pay.Month}</td>
+                                <td>{regex.regex}</td>
                                 <td>
                                     <div className="regex-actions">
-                                        <button className="btn btn-danger" onClick={handleID} name="ID" value={pay.id} style={{gridRow:1,gridColumn:1,marginBottom:'5px'}}>Borrar</button>
-                                        <button className="btn" onClick={handleID} name="ID" value={pay.id} style={{gridRow:2,gridColumn:1 ,background: '#8db1ab' }}>Ver</button>
+                                        <button className="btn btn-danger" onClick={handleID} name="ID" value={regex.id} style={{gridRow:1,gridColumn:1,marginBottom:'5px'}}>Borrar</button>
+                                        <button className="btn" onClick={handleID} name="ID" value={regex.id} style={{gridRow:2,gridColumn:1 ,background: '#8db1ab' }}>Ver</button>
                                     </div>
                                 </td>
                             </tr>

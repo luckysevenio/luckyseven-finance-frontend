@@ -46,6 +46,7 @@ export function App() {
       const total_NW= await callApi(`net-worth/last/getLast/${email}`)    
       const balance = await callApi(`user-addresses/getBalances/${email}`)
       const payment = await callApi(`payments/List/${email}`)
+      const regex = await callApi(`deposit-regexes/find/${email}`)
       const dolar = await axios.get('https://mindicador.cl/api/dolar')
       dispatch({
         type: ActionTypes.STORE_USER,
@@ -66,6 +67,10 @@ export function App() {
       dispatch({
         type: ActionTypes.STORE_PAYMENT,
         payload: payment
+      })
+      dispatch({
+        type: ActionTypes.STORE_REGEX,
+        payload: regex
       })
       dispatch({
         type: ActionTypes.STORE_DOLAR,
