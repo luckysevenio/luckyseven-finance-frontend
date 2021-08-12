@@ -20,7 +20,7 @@ import NetWorth from './components/NetWorth';
 import FormRS from './components/FormRS';
 import FormNW from './components/FormNW';
 import Payments from './components/Payments';
-
+import Transactions from './components/Transactions';
 
 const StyledApp = styled.div`
   .app{
@@ -42,8 +42,8 @@ export function App() {
   useEffect(() => {
     async function callCharacter() {
       const user = await callApi(`user-addresses/find/${email}`);
-      const result_s = await callApi(`results/last/getLast`);
-      const total_NW= await callApi('net-worth/last/getLast')    
+      const result_s = await callApi(`results/last/getLast/${email}`);
+      const total_NW= await callApi(`net-worth/last/getLast/${email}`)    
       const balance = await callApi(`user-addresses/getBalances/${email}`)
       const payment = await callApi(`payments/List/${email}`)
       const dolar = await axios.get('https://mindicador.cl/api/dolar')
@@ -96,6 +96,9 @@ export function App() {
               <Route path="/pagos">
                 <hr/>
                 <Payments/>
+              </Route>
+              <Route path="/transacciones">
+               <Transactions/>
               </Route>
               <Route path="/">
                 <Balances/>

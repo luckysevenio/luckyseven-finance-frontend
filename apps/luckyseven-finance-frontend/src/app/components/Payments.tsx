@@ -26,7 +26,7 @@ const StyledApp = styled.div`
 `
 function Payments() {
     const payments = useSelector((state: State) => state.payment)
-    const [payment, setPayment] = useState({ Year: 'Año', Month: 'Mes', Amount: 0, Mail: email })
+    const [payment, setPayment] = useState({ Year: 'Año', Month: 'Mes', Amount: 0, Owner: email })
     const handleChange = (event) => {
         setPayment({ ...payment, [event.target.name]: event.target.value })
     }

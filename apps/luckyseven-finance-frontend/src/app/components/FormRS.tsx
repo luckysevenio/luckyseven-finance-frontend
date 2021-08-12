@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react'
+import { email } from '../constants';
 import { postApi } from '../utils/endpoints';
 
 function FormRS() {
-    const [results, setResult] = useState({ResultState:0});
+    const [results, setResult] = useState({ResultState:0, Owner:email});
     const handleChange = (event)=>{
       setResult({...results,[event.target.name] : event.target.value})
       console.log(results.ResultState);
