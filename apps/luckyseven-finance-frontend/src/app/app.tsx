@@ -98,6 +98,7 @@ export function App() {
                 <Payments/>
               </Route>
               <Route path="/transacciones">
+                <hr/>
                <Transactions/>
               </Route>
               <Route path="/">
