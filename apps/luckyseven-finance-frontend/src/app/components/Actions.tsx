@@ -36,7 +36,7 @@ function Actions() {
               <a className="navbar-brand" href="/estado-resultado">
                 Estado de resultado y Balance Neto
               </a>
-              <a className="navbar-brand">Transacciones</a>
+              <a className="navbar-brand" href="/transacciones">Transacciones</a>
               <a className="navbar-brand" href="/pagos">
                 Pagos
               </a>

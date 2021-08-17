@@ -14,7 +14,8 @@ const initialState = {
   user_balances: 0,
   dolar: 0,
   net_worth:[],
-  payment:null
+  payment:null,
+  regexes:[]
 };
 
 export type State = typeof initialState;
@@ -28,7 +29,8 @@ export enum ActionTypes {
   'STORE_BALANCES'='STORE_BALANCES',
   'STORE_DOLAR'='STORE_DOLAR',
   'STORE_NW'='STORE_NW',
-  'STORE_PAYMENT'='STORE_PAYMENT'
+  'STORE_PAYMENT'='STORE_PAYMENT',
+  'STORE_REGEX'='STORE_REGEX'
 }
 
 type Action =
@@ -41,6 +43,7 @@ type Action =
   | { type: ActionTypes.STORE_DOLAR; payload: number }
   | { type: ActionTypes.STORE_NW; payload: any }
   | { type: ActionTypes.STORE_PAYMENT; payload: any }
+  | { type: ActionTypes.STORE_REGEX; payload: any }
 
 
 export function reducer(state: State, action: Action): State {
@@ -97,6 +100,12 @@ export function reducer(state: State, action: Action): State {
       return{
         ...state,
         payment: action.payload
+      }
+    }
+    case ActionTypes.STORE_REGEX:{
+      return{
+        ...state,
+        regexes: action.payload
       }
     }
     default: {
