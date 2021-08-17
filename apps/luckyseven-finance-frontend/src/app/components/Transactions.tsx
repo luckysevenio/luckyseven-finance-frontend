@@ -74,7 +74,7 @@ function Transactions() {
                     <form onSubmit={handleSubmit} className="form-payment">
                         <ul className="navbar-nav">
                             <input onChange={handleChange} name="regex" type="text" className="form-control" id="floatingInput" placeholder="Nombre de transacción  "></input>
-                            <button type="submit" className="btn" style={{ background: '#8db1ab' }}>AGREGAR</button>
+                            <button type="submit" className="btn" style={{ background: '#8db1ab' }}>Agregar</button>
                         </ul>
                     </form>
                 </nav>
@@ -95,7 +95,7 @@ function Transactions() {
                                 <td>
                                     <div className="regex-actions">
                                         <button className="btn btn-danger" onClick={handleID} name="ID" value={regex.id} style={{gridRow:1,gridColumn:1,marginBottom:'5px'}}>Borrar</button>
-                                        <button className="btn" onClick={handleID} name="ID" value={regex.id} style={{gridRow:2,gridColumn:1 ,background: '#8db1ab' }}>Ver</button>
+                                        <a className="btn" href={`/transacciones/info?nombre=${regex.regex}`} style={{gridRow:2,gridColumn:1 ,background: '#8db1ab' }}>Ver</a>
                                     </div>
                                 </td>
                             </tr>
