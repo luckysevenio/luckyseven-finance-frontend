@@ -1,6 +1,8 @@
 import axios from 'axios';
+console.log(process.env.NODE_ENV);
+
 const baseurl =
-  process.env.NODE_ENV == 'development'
+  process.env.NODE_ENV === 'development'
     ? 'http://localhost:1337/'
     : 'https://luckyseven-backend.herokuapp.com/';
 
