@@ -89,7 +89,7 @@ function Transactions() {
                     </thead>
                     <tbody>
                         {regexes?.map((regex, index) => (
-                            <tr style={{verticalAlign:'center'}}>
+                            <tr style={{verticalAlign:'center'}} key={regex.id}>
                                 <th scope="row" >{index + 1}</th>
                                 <td>{regex.regex}</td>
                                 <td>

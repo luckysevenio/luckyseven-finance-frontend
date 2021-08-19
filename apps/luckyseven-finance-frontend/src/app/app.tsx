@@ -21,6 +21,7 @@ import FormRS from './components/FormRS';
 import FormNW from './components/FormNW';
 import Payments from './components/Payments';
 import Transactions from './components/Transactions';
+import TR_info from './components/TR_info';
 
 const StyledApp = styled.div`
   .app{
@@ -101,6 +102,10 @@ export function App() {
               <Route path="/pagos">
                 <hr/>
                 <Payments/>
+              </Route>
+              <Route path="/transacciones/info">
+                <hr />
+                <TR_info/>
               </Route>
               <Route path="/transacciones">
                 <hr/>
