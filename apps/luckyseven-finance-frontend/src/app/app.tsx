@@ -99,7 +99,7 @@ export function App() {
               <Route path="/net-worth/upload">
                 <FormNW/>
               </Route>
-              <Route path="/pagos">
+              <Route path="/sueldos">
                 <hr/>
                 <Payments/>
               </Route>
