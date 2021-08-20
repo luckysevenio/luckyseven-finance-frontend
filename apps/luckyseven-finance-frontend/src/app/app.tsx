@@ -103,11 +103,11 @@ export function App() {
                 <hr/>
                 <Payments/>
               </Route>
-              <Route path="/transacciones/info">
+              <Route path="/retiros/info">
                 <hr />
                 <TR_info/>
               </Route>
-              <Route path="/transacciones">
+              <Route path="/retiros">
                 <hr/>
                <Transactions/>
               </Route>
