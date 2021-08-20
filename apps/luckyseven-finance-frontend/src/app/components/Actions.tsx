@@ -40,7 +40,7 @@ function Actions() {
               <a className="navbar-brand" href="/sueldos">
                 Sueldos
               </a>
-              <a className="navbar-brand">Balances</a>
+              <a className="navbar-brand" href="/resultados">Resultados</a>
             </ul>
           </div>
         </nav>
