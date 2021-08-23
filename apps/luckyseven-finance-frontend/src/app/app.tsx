@@ -43,13 +43,14 @@ export function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     async function callCharacter() {
+      const dolar = await axios.get('https://mindicador.cl/api/dolar')
       const user = await callApi(`user-addresses/find/${email}`);
       const result_s = await callApi(`results/last/getLast/${email}`);
       const total_NW= await callApi(`net-worth/last/getLast/${email}`)    
       const balance = await callApi(`user-addresses/getBalances/${email}`)
       const payment = await callApi(`payments/List/${email}`)
       const regex = await callApi(`deposit-regexes/find/${email}`)
-      const dolar = await axios.get('https://mindicador.cl/api/dolar')
+      const result_transact = await callApi(`withdraws/results/by/user/${email}`)
       dispatch({
         type: ActionTypes.STORE_USER,
         payload: user,
@@ -73,6 +74,10 @@ export function App() {
       dispatch({
         type: ActionTypes.STORE_REGEX,
         payload: regex
+      })
+      dispatch({
+        type: ActionTypes.STORE_USER_RESULT,
+        payload: result_transact
       })
       dispatch({
         type: ActionTypes.STORE_DOLAR,

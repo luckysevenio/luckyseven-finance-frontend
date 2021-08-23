@@ -1,5 +1,10 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
+import { ActionTypes, State } from '../../store';
+import { email } from '../constants';
+import { callApi } from '../utils/endpoints';
 
 const StyledApp = styled.div`
 
@@ -45,9 +50,29 @@ function Results() {
         currency: 'CLP',
         minimumFractionDigits: 0
     });
+    const transactions = useSelector((state: State) => state.user_results)
+    console.log(transactions?.global.resultado);
+    
     return (
         <StyledApp>
             <div>
+                <h1 style={{ color: "white", textAlign: "center" }}>Global</h1>
+                <table className="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Retiros</th>
+                            <th scope="col">Sueldos</th>
+                            <th scope="col">Resultados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style={{ verticalAlign: 'center' }}>
+                            <td>{transactions==null? formatter.format(0) :formatter.format(transactions?.global.retiros)}</td>
+                            <td >{transactions==null? formatter.format(0) :formatter.format(transactions?.global.sueldos)}</td>
+                            <td style={Math.sign(transactions?.global.resultados) != -1 ? { color: "white" } : { color: "red" }}>{transactions==null? formatter.format(0) :formatter.format(transactions?.global.resultados)}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <hr />
                 <table className="table table-dark table-striped">
                     <thead>
@@ -59,12 +84,14 @@ function Results() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style={{ verticalAlign: 'center' }}>
-                            <th scope="row" >1</th>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                        </tr>
+                        {transactions?.detalle.map((tr, index) => (
+                            <tr style={{ verticalAlign: 'center' }} key={index}>
+                                <th scope="row" >{tr.fecha}</th>
+                                <td>{formatter.format(tr.retiros)}</td>
+                                <td >{formatter.format(tr.sueldos)}</td>
+                                <td style={Math.sign(tr.resultado) != -1 ? { color: "white" } : { color: "red" }}>{formatter.format(tr.resultado)}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

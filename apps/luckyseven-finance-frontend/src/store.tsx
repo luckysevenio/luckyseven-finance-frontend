@@ -12,6 +12,7 @@ const initialState = {
   lastresult: [],
   user: null,
   user_balances: 0,
+  user_results: null,
   dolar: 0,
   net_worth:[],
   payment:null,
@@ -29,6 +30,7 @@ export enum ActionTypes {
   'STORE_BALANCES'='STORE_BALANCES',
   'STORE_DOLAR'='STORE_DOLAR',
   'STORE_NW'='STORE_NW',
+  'STORE_USER_RESULT'='STORE_USER_RESULT',
   'STORE_PAYMENT'='STORE_PAYMENT',
   'STORE_REGEX'='STORE_REGEX'
 }
@@ -44,6 +46,7 @@ type Action =
   | { type: ActionTypes.STORE_NW; payload: any }
   | { type: ActionTypes.STORE_PAYMENT; payload: any }
   | { type: ActionTypes.STORE_REGEX; payload: any }
+  | { type: ActionTypes.STORE_USER_RESULT; payload: any }
 
 
 export function reducer(state: State, action: Action): State {
@@ -106,6 +109,12 @@ export function reducer(state: State, action: Action): State {
       return{
         ...state,
         regexes: action.payload
+      }
+    }
+    case ActionTypes.STORE_USER_RESULT:{
+      return{
+        ...state,
+        user_results: action.payload
       }
     }
     default: {
