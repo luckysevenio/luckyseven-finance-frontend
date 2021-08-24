@@ -25,6 +25,11 @@ const StyledApp = styled.div`
 }
 `
 function Payments() {
+    const formatter = new Intl.NumberFormat('es-CL', {
+        style: 'currency',
+        currency: 'CLP',
+        minimumFractionDigits: 0
+    });
     const payments = useSelector((state: State) => state.payment)
     const [payment, setPayment] = useState({ Year: 'Año', Month: 'Mes', Amount: 0, Owner: email })
     const handleChange = (event) => {
@@ -94,7 +99,7 @@ function Payments() {
                         <tr>
                             <th scope="row">{index + 1}</th>
                             <td>{pay.Year}/{pay.Month}</td>
-                            <td>${pay.Amount} CLP</td>
+                            <td>{formatter.format(pay.Amount)} CLP</td>
                             <td><button className="btn btn-danger" onClick={handleID} name="ID" value={pay.id}>Borrar</button></td>
                         </tr>
                     ))}

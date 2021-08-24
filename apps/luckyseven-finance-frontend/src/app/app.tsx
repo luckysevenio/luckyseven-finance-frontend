@@ -22,6 +22,7 @@ import FormNW from './components/FormNW';
 import Payments from './components/Payments';
 import Transactions from './components/Transactions';
 import TR_info from './components/TR_info';
+import Results from './components/Results';
 
 const StyledApp = styled.div`
   .app{
@@ -42,13 +43,14 @@ export function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     async function callCharacter() {
+      const dolar = await axios.get('https://mindicador.cl/api/dolar')
       const user = await callApi(`user-addresses/find/${email}`);
       const result_s = await callApi(`results/last/getLast/${email}`);
       const total_NW= await callApi(`net-worth/last/getLast/${email}`)    
       const balance = await callApi(`user-addresses/getBalances/${email}`)
       const payment = await callApi(`payments/List/${email}`)
       const regex = await callApi(`deposit-regexes/find/${email}`)
-      const dolar = await axios.get('https://mindicador.cl/api/dolar')
+      const result_transact = await callApi(`withdraws/results/by/user/${email}`)
       dispatch({
         type: ActionTypes.STORE_USER,
         payload: user,
@@ -72,6 +74,10 @@ export function App() {
       dispatch({
         type: ActionTypes.STORE_REGEX,
         payload: regex
+      })
+      dispatch({
+        type: ActionTypes.STORE_USER_RESULT,
+        payload: result_transact
       })
       dispatch({
         type: ActionTypes.STORE_DOLAR,
@@ -99,17 +105,20 @@ export function App() {
               <Route path="/net-worth/upload">
                 <FormNW/>
               </Route>
-              <Route path="/pagos">
+              <Route path="/sueldos">
                 <hr/>
                 <Payments/>
               </Route>
-              <Route path="/transacciones/info">
+              <Route path="/retiros/info">
                 <hr />
                 <TR_info/>
               </Route>
-              <Route path="/transacciones">
+              <Route path="/retiros">
                 <hr/>
                <Transactions/>
+              </Route>
+              <Route path="/resultados">
+                <Results/>
               </Route>
               <Route path="/">
                 <Balances/>

@@ -36,11 +36,11 @@ function Actions() {
               <a className="navbar-brand" href="/estado-resultado">
                 Estado de resultado y Balance Neto
               </a>
-              <a className="navbar-brand" href="/transacciones">Transacciones</a>
-              <a className="navbar-brand" href="/pagos">
-                Pagos
+              <a className="navbar-brand" href="/retiros">Retiros</a>
+              <a className="navbar-brand" href="/sueldos">
+                Sueldos
               </a>
-              <a className="navbar-brand">Balances</a>
+              <a className="navbar-brand" href="/resultados">Resultados</a>
             </ul>
           </div>
         </nav>

@@ -95,7 +95,7 @@ function Transactions() {
                                 <td>
                                     <div className="regex-actions">
                                         <button className="btn btn-danger" onClick={handleID} name="ID" value={regex.id} style={{gridRow:1,gridColumn:1,marginBottom:'5px'}}>Borrar</button>
-                                        <a className="btn" href={`/transacciones/info?nombre=${regex.regex}`} style={{gridRow:2,gridColumn:1 ,background: '#8db1ab' }}>Ver</a>
+                                        <a className="btn" href={`/retiros/info?nombre=${regex.regex}`} style={{gridRow:2,gridColumn:1 ,background: '#8db1ab' }}>Ver</a>
                                     </div>
                                 </td>
                             </tr>
