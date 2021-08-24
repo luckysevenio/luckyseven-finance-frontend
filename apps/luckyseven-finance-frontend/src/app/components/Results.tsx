@@ -67,9 +67,9 @@ function Results() {
                     </thead>
                     <tbody>
                         <tr style={{ verticalAlign: 'center' }}>
-                            <td>{transactions==null? formatter.format(0) :formatter.format(transactions?.global.retiros)}</td>
-                            <td >{transactions==null? formatter.format(0) :formatter.format(transactions?.global.sueldos)}</td>
-                            <td style={Math.sign(transactions?.global.resultados) != -1 ? { color: "white" } : { color: "red" }}>{transactions==null? formatter.format(0) :formatter.format(transactions?.global.resultados)}</td>
+                            <td>{transactions==null? formatter.format(0) :formatter.format(transactions?.global.retiros)} CLP</td>
+                            <td >{transactions==null? formatter.format(0) :formatter.format(transactions?.global.sueldos)} CLP</td>
+                            <td style={Math.sign(transactions?.global.resultados) != -1 ? { color: "white" } : { color: "red" }}>{transactions==null? formatter.format(0) :formatter.format(transactions?.global.resultados)} CLP</td>
                         </tr>
                     </tbody>
                 </table>
@@ -87,9 +87,9 @@ function Results() {
                         {transactions?.detalle.map((tr, index) => (
                             <tr style={{ verticalAlign: 'center' }} key={index}>
                                 <th scope="row" >{tr.fecha}</th>
-                                <td>{formatter.format(tr.retiros)}</td>
-                                <td >{formatter.format(tr.sueldos)}</td>
-                                <td style={Math.sign(tr.resultado) != -1 ? { color: "white" } : { color: "red" }}>{formatter.format(tr.resultado)}</td>
+                                <td>{formatter.format(tr.retiros)} CLP</td>
+                                <td >{formatter.format(tr.sueldos)} CLP</td>
+                                <td style={Math.sign(tr.resultado) != -1 ? { color: "white" } : { color: "red" }}>{formatter.format(tr.resultado)} CLP</td>
                             </tr>
                         ))}
                     </tbody>
